@@ -1,6 +1,7 @@
 <template>
   <div class="music">
     <common-header title="Music" bgcolor='#e91e63'/>
+    <router-view></router-view>
     <common-footer bgcolor='#e91e63'/>
   </div>
 </template>

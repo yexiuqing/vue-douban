@@ -1,9 +1,9 @@
 <template>
   <div class="nav">
    <ul>
-     <li>口碑榜</li>
-     <li>新片榜</li>
-     <li>正在上映</li>
+     <li><router-link to='/movie/koubei'>口碑榜</router-link></li>
+     <li><router-link to='/movie/xinpian'>新片榜</router-link></li>
+     <li><router-link to='/movie/shangying'>正在上映</router-link></li>
    </ul>
   </div>
 </template>
@@ -26,8 +26,11 @@ export default {
   }
   .nav li {
     flex:1;
-    color: #fff;
+    color: #ccc;
     text-align: center;
     line-height: 1rem;
+  }
+  .nav li a.router-link-active{
+     color: #fff;
   }
 </style>

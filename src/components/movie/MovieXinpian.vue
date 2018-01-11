@@ -1,28 +1,19 @@
 <template>
   <div class="movie">
-    <common-header title='Movie' bgcolor='rgb(33, 150, 243)'></common-header>
-    <nav-bar></nav-bar >
-    <router-view/>
-    <div class="loading" v-show="show">
-      <img src="../../assets/img/loading.gif" alt="加载中">
+    <div class="movie-list">
+        <movie-list v-for="(item, key) in movieList" :key="key" :img="item.images.small" :title="item.title" :year="item.year" :avg="item.rating.average" :desc="item.genres"></movie-list>     
     </div>
-    <common-footer bgcolor='rgb(33, 150, 243)'></common-footer>
   </div> 
 </template>
 <script>
-import CommonHeader from "../common/CommonHeader";
-import CommonFooter from "../common/CommonFooter";
-import NavBar from "./NavBar";
-import MovieList from "./MovieList";
+import MovieList from './MovieList'
 import Axios from "axios";
 
 export default {
   name: "movie",
   data() {
     return {
-      movieList: [],
-      show:false,
-      total:""
+      movieList: []
     };
   },
   mounted() {
@@ -53,9 +44,6 @@ export default {
     }
   },
   components: {
-    CommonHeader,
-    CommonFooter,
-    NavBar,
     MovieList
   }
 };
@@ -72,18 +60,5 @@ export default {
   height: 1rem;
   width: 100%;
   display: flex;
-}
-.header button {
-  color: #fff;
-}
-.header h2 {
-  flex: 1;
-  color: #fff;
-  text-align: center;
-  text-indent: -1rem;
-}
-.loading {
-  margin-bottom: 1rem;
-  text-align: center;
 }
 </style>

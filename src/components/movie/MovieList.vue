@@ -1,5 +1,5 @@
 <template>
-  <div class="top250">
+  <div class="list">
    <div class="moive-img">
      <img :src="img" alt="图片">
    </div>
@@ -20,7 +20,7 @@ export default {
 </script>
 
 <style scoped>
-  .top250 {
+  .list {
     padding: 0.4rem;
     margin:.4rem 0;
   }
