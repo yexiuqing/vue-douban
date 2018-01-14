@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     getData() {
-      Axios.get("api/movie/top250?count=10&start="+this.movieList.length)
+      Axios.get("api/movie/in_theaters?city=‘上海’&count=10&start="+this.movieList.length)
         .then(res => {
           console.log(res.data)
           this.total = res.data.total;

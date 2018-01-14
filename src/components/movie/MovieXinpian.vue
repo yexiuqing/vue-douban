@@ -13,7 +13,8 @@ export default {
   name: "movie",
   data() {
     return {
-      movieList: []
+      movieList: [],
+      showLoading: true
     };
   },
   mounted() {
@@ -31,7 +32,7 @@ export default {
   },
   methods: {
     getData() {
-      Axios.get("api/movie/top250?count=10&start="+this.movieList.length)
+      Axios.get("api/movie/coming_soon?count=10&start="+this.movieList.length)
         .then(res => {
           console.log(res.data)
           this.total = res.data.total;
@@ -41,7 +42,11 @@ export default {
         .then(res => {
           console.log("error");
         });
+      if(this.movieList.length >= res.data.subjects) {
+        this.showLoading = flase;
+      }
     }
+    
   },
   components: {
     MovieList

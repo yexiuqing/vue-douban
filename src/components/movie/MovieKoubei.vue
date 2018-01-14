@@ -13,7 +13,9 @@ export default {
   name: "movie",
   data() {
     return {
-      movieList: []
+      movieList: [],
+      show: false,
+      total:0
     };
   },
   mounted() {
@@ -27,7 +29,13 @@ export default {
         _this.show = true;
       } 
     };
-    this.getData()
+    if(this.movieList.length != this.total-10) {
+      this.getData();
+      this.$store.dispatch('loadingIsShow',true);
+    } else {
+      this.$store.dispatch('loadingIsShow',false);
+    }
+    
   },
   methods: {
     getData() {

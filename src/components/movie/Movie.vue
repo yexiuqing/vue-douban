@@ -2,8 +2,8 @@
   <div class="movie">
     <common-header title='Movie' bgcolor='rgb(33, 150, 243)'></common-header>
     <nav-bar></nav-bar >
-    <router-view/>
-    <div class="loading" v-show="show">
+    <router-view ></router-view>
+    <div class="loading" v-show="$store.state.showLoading">
       <img src="../../assets/img/loading.gif" alt="加载中">
     </div>
     <common-footer bgcolor='rgb(33, 150, 243)'></common-footer>
@@ -13,7 +13,6 @@
 import CommonHeader from "../common/CommonHeader";
 import CommonFooter from "../common/CommonFooter";
 import NavBar from "./NavBar";
-import MovieList from "./MovieList";
 import Axios from "axios";
 
 export default {
@@ -21,42 +20,48 @@ export default {
   data() {
     return {
       movieList: [],
-      show:false,
+      show: false,
       total:""
     };
   },
-  mounted() {
-    let _this = this
-    window.onscroll = function() {
-      let scrollTop = document.documentElement.scrollTop;
-      let screenHeight = document.documentElement.clientHeight;
-      let htmlHeight = document.documentElement.scrollHeight;
-      if (scrollTop + screenHeight >= htmlHeight ) {
-        _this.getData()
-        _this.show = true;
-      } 
-    };
-    this.getData()
-  },
-  methods: {
-    getData() {
-      Axios.get("api/movie/top250?count=10&start="+this.movieList.length)
-        .then(res => {
-          console.log(res.data)
-          this.total = res.data.total;
-          this.movieList = this.movieList.concat(res.data.subjects);
-          this.show = true;
-        })
-        .then(res => {
-          console.log("error");
-        });
-    }
-  },
+  // mounted() {
+  //   let _this = this
+  //   window.onscroll = function() {
+  //     let scrollTop = document.documentElement.scrollTop;
+  //     let screenHeight = document.documentElement.clientHeight;
+  //     let htmlHeight = document.documentElement.scrollHeight;
+  //     if (scrollTop + screenHeight >= htmlHeight ) {
+  //       _this.getData()
+  //       _this.show = true;
+  //     } 
+  //   };
+  //   this.getData()
+  //   this.$store.dispatch('loadingIsShow','');
+  // },
+  // methods: {
+  //   getData() {
+  //     Axios.get("api/movie/top250?count=10&start="+this.movieList.length)
+  //       .then(res => {
+  //         console.log(res.data)
+  //         this.total = res.data.total;
+  //         this.movieList = this.movieList.concat(res.data.subjects);
+  //         // if(this.movieList.length >= this.total) {
+  //         //   this.show = false;
+  //         // } else {
+  //         //   this.show = true;    
+  //         // }
+  //       })
+  //       .then(res => {
+  //         console.log("error");
+  //       });
+        
+  //   }
+
+  // },
   components: {
     CommonHeader,
     CommonFooter,
-    NavBar,
-    MovieList
+    NavBar
   }
 };
 </script>
