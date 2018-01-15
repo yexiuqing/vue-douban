@@ -3,7 +3,7 @@
     <common-header title='Movie' bgcolor='rgb(33, 150, 243)'></common-header>
     <nav-bar></nav-bar >
     <router-view ></router-view>
-    <div class="loading" v-show="$store.state.showLoading">
+    <div class="loading" v-show="show">
       <img src="../../assets/img/loading.gif" alt="加载中">
     </div>
     <common-footer bgcolor='rgb(33, 150, 243)'></common-footer>

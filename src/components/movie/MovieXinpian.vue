@@ -42,9 +42,6 @@ export default {
         .then(res => {
           console.log("error");
         });
-      if(this.movieList.length >= res.data.subjects) {
-        this.showLoading = flase;
-      }
     }
     
   },
